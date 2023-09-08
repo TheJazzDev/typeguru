@@ -1,0 +1,30 @@
+# .gitignore
+
+# Ignore all files starting with ".env"
+.env*
+
+# Ignore Python compiled files
+*.pyc
+__pycache__
+
+# Ignore SQLite database files
+*.sqlite3
+
+# Ignore log files
+*.log
+
+# Ignore other database files (replace with the actual database file extensions)
+*.db
+
+# Ignore Node.js dependencies (if applicable)
+node_modules/
+
+# Ignore IDE-specific settings (e.g., for VS Code and PyCharm)
+.vscode/
+.idea/
+
+# Ignore optimized Python files
+*.pyo
+
+# Ignore the Git directory itself (not recommended to commit Git within Git)
+.git

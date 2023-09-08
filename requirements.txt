@@ -1,0 +1,4 @@
+Django==4.2
+psycopg2==2.9.7
+python-dotenv==0.20.0
+django-browser-reload
