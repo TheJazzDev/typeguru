@@ -14,11 +14,9 @@ import os
 
 from dotenv import load_dotenv
 
-# from pathlib import Path
-
-
 # Load environment variables from .env file
 load_dotenv()
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,7 +32,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG = os.environ["DEBUG"]
 
 
-ALLOWED_HOSTS = ["127.0.0.1", "0.0.0.0"]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -85,6 +83,7 @@ WSGI_APPLICATION = "project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
 DATABASES = {
     "default": {
         "ENGINE": os.environ["DB_ENGINE"],
@@ -96,8 +95,8 @@ DATABASES = {
     }
 }
 
-# 
-AUTH_USER_MODEL = 'typeguru.User'
+#
+AUTH_USER_MODEL = "typeguru.User"
 
 
 # Password validation
