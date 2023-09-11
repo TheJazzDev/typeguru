@@ -1,8 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['typeguru/templates/typeguru/**/*.html'],
+  content: ['./typeguru/templates/typeguru/**/*.html'],
   theme: {
     extend: {},
   },
   plugins: [],
-};
+}
+

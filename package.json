@@ -1,6 +1,13 @@
 {
+  "name": "typeguru",
+  "version": "1.0.0",
+  "description": "A touch typing web app",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
   "scripts": {
-    "dev": "npx tailwindcss -i ./static/src/input.css -o ./static/src/styles.css --watch"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tailwindcss -i ./static/css/input.css -o ./static/css/styles.css --watch"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.15",
