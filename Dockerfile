@@ -28,6 +28,9 @@ COPY . .
 # Stage 3: Final image
 FROM python:3.9
 
+# Install Node.js in the final image
+RUN apt-get update && apt-get install -y nodejs
+
 WORKDIR /usr/src/app
 
 # Copy built Node.js app from Stage 1
@@ -35,6 +38,9 @@ COPY --from=nodejs_builder /usr/src/nodejs_app ./nodejs_app
 
 # Copy built Python app from Stage 2
 COPY --from=python_builder /usr/src/python_app .
+
+# Expose the port your application will listen on
+EXPOSE 8000
 
 # Define the command to start your application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
