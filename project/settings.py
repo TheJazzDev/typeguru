@@ -32,7 +32,9 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG = os.environ["DEBUG"]
 
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "typeguru-uy7k744b.b4a.run"]
+
+PORT = 8000
 
 
 # Application definition
