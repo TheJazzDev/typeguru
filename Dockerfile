@@ -10,7 +10,7 @@ RUN npm install
 COPY . .
 
 # Use npm run dev for development
-CMD ["npm", "run", "dev"]
+CMD npm run dev
 
 # Stage 2: Build the Python app
 FROM python:3.9 AS python_builder
@@ -23,13 +23,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-# No need to specify a build command for Python here
-
 # Stage 3: Final image
 FROM python:3.9
-
-# Install Node.js in the final image
-FROM node:18
 
 WORKDIR /usr/src/app
 
@@ -37,10 +32,10 @@ WORKDIR /usr/src/app
 COPY --from=nodejs_builder /usr/src/nodejs_app ./nodejs_app
 
 # Copy built Python app from Stage 2
-COPY --from=python_builder /usr/src/python_app .
+COPY --from=python_builder /usr/src/python_app ./python_app
 
 # Expose the port your application will listen on
 EXPOSE 8000
 
 # Define the command to start your application
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD python manage.py runserver 0.0.0.0:8000
