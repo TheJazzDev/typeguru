@@ -4,8 +4,10 @@ services:
   db:
     image: postgres:latest
     container_name: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
     ports:
-      - '5432:5432'
+      - '5433:5432'
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
@@ -18,6 +20,8 @@ services:
       dockerfile: Dockerfile.nodejs
     container_name: nodejs
     tty: true
+    image: node:gallium-bullseye
+    restart: on-failure
     command: npm run dev
     volumes:
       - .:/usr/src/app
@@ -36,3 +40,6 @@ services:
       - '8000:8000'
     depends_on:
       - db
+
+volumes:
+  pgdata:
