@@ -1,17 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-    {% block title %}Touch Typing{% endblock %}
-  </title>
-  <link href="{% static 'css/styles.css' %}" rel="stylesheet">
-</head>
-<body>
-{% block body %} {% endblock %}
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {% block title %}Touch Typing{% endblock %}
+    </title>
+    <link href="{% static 'css/styles.css' %}?v=11" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'typeguru/styles.css' %}?v=11">
+  </head>
+  <body class="bg-[#121520]">
+    <nav class="flex justify-between items-center mx-auto text-center w-full max-w-5xl text-[#676e8a] px-8 py-4">
+      <div>
+        <a href="{% url 'index' %}" class="text-3xl">TypeGuru</a>
+      </div>
+      <ul class="flex text-base gap-4">
+        <li>
+          <a href="{% url 'leaderboard' %}">Leaderboard</a>
+        </li>
+        <li id="settings-button" class="cursor-pointer">
+          Settings
+        </li>
+        <li>
+          <a href="{% url 'account' %}">Profile</a>
+        </li>
+      </ul>
+    </nav>
+    <div tabindex="0" id="tab-capture"></div>
+    <div>
+      {% block body %}{% endblock %}
+    </div>
+    <footer class="text-center text-[#676e8a] py-4 text-xl fixed bottom-0 w-full">
+      Footer
+    </footer>
+  </body>
 </html>
+<!-- class="h-[calc(100vh-300px)]" -->

@@ -1,0 +1,20 @@
+{% extends "typeguru/layout.html" %}
+{% load static %}
+{% block body %}
+  <div>
+    {{ user.username }}
+    {{ user.email }}
+    {{ user.date_registered }}
+  </div>
+  <div class="flex gap-10">
+    {% for data in all_data %}
+      <div>
+        <p>WPM: {{ data.wpm }}</p>
+        <p>Accuracy: {{ data.accuracy }}</p>
+        <p>Mode: {{ data.mode }}</p>
+        <p>Difficulty: {{ data.difficulty }}</p>
+      </div>
+    {% endfor %}
+  </div>
+  <!-- <script type="module" src="{% static 'typeguru/text.js' %}?v=11"></script> -->
+{% endblock %}

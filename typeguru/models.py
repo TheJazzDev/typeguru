@@ -29,7 +29,10 @@ class TypingData(models.Model):
 
     def serialize(self):
         return {
-            "id": self.id,
+            "user": {
+                "username": self.user.username,
+                "email": self.user.email,
+            },
             "wpm": self.wpm,
             "accuracy": self.accuracy,
             "mode": self.mode,

@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:gallium-bullseye
 
 WORKDIR /usr/src/app
 
@@ -7,7 +7,5 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-
-EXPOSE 51480
 
 CMD ["npm", "run", "dev"]

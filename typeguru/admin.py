@@ -10,7 +10,7 @@ class AdminUser(admin.ModelAdmin):
 
 
 class AdminTypingData(admin.ModelAdmin):
-    list_display = ("user", "wpm", "accuracy", "mode", "difficulty", "timestamp")
+    list_display = ("id", "user", "wpm", "accuracy", "mode", "difficulty", "timestamp")
 
 
 admin.site.register(User, AdminUser)
