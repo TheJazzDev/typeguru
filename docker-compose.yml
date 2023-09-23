@@ -3,7 +3,7 @@ version: '3'
 services:
   db:
     image: postgres:latest
-    container_name: postgres
+    container_name: db
     ports:
       - '5432:5432'
     environment:
@@ -15,7 +15,6 @@ services:
   nodejs:
     build:
       context: .
-      dockerfile: Dockerfile.nodejs
     container_name: nodejs
     tty: true
     command: npm run dev
@@ -27,9 +26,8 @@ services:
   django:
     build:
       context: .
-      dockerfile: Dockerfile.python
     container_name: django
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn typeguru.wsgi:application -b 0.0.0.0:8000
     volumes:
       - .:/usr/src/app
     ports:

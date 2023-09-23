@@ -3,11 +3,11 @@ version: '3'
 services:
   db:
     image: postgres:latest
-    container_name: postgres
+    container_name: db
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - '5433:5432'
+      - '5432:5432'
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
@@ -17,10 +17,8 @@ services:
   nodejs:
     build:
       context: .
-      # dockerfile: Dockerfile.nodejs
     container_name: nodejs
     tty: true
-    image: node:gallium-bullseye
     restart: on-failure
     command: npm run dev
     volumes:
@@ -31,7 +29,6 @@ services:
   django:
     build:
       context: .
-      # dockerfile: Dockerfile.python
     container_name: django
     command: python manage.py runserver 0.0.0.0:8000
     volumes:

@@ -29,7 +29,7 @@ COPY . .
 FROM python:3.9
 
 # Install Node.js in the final image
-RUN apt-get update && apt-get install -y nodejs
+FROM node:18
 
 WORKDIR /usr/src/app
 
