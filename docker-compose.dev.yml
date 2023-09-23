@@ -17,7 +17,7 @@ services:
   nodejs:
     build:
       context: .
-      dockerfile: Dockerfile.nodejs
+      # dockerfile: Dockerfile.nodejs
     container_name: nodejs
     tty: true
     image: node:gallium-bullseye
@@ -31,7 +31,7 @@ services:
   django:
     build:
       context: .
-      dockerfile: Dockerfile.python
+      # dockerfile: Dockerfile.python
     container_name: django
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
