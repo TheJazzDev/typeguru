@@ -145,16 +145,18 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# settings.py
 
 # Enable HTTP Strict Transport Security (HSTS)
-SECURE_HSTS_SECONDS = 3600  # Set the duration in seconds
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_SECONDS = os.environ["SECURE_HSTS_SECONDS"]
+SECURE_HSTS_INCLUDE_SUBDOMAINS = os.environ["SECURE_HSTS_INCLUDE_SUBDOMAINS"]
+SECURE_HSTS_PRELOAD = os.environ["SECURE_HSTS_PRELOAD"]
 
 # Redirect all HTTP requests to HTTPS
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = os.environ["SECURE_SSL_REDIRECT"]
 
 # Use secure-only session and CSRF cookies
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = os.environ["SESSION_COOKIE_SECURE"]
+CSRF_COOKIE_SECURE = os.environ["CSRF_COOKIE_SECURE"]
+
+SECURE_PROXY_SSL_HEADER = tuple(os.environ.get("SECURE_PROXY_SSL_HEADER", '').split(','))
+# print(SECURE_PROXY_SSL_HEADER)

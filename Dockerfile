@@ -7,6 +7,8 @@ COPY package*.json ./
 
 RUN npm install
 
+RUN chown -R node /usr/src/nodejs_app/node_modules
+
 COPY . .
 
 # Use npm run dev for development

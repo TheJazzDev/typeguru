@@ -255,6 +255,7 @@ const selectMode = (e) => {
   modeButtons.forEach((button) => {
     button.classList.remove('selected-time');
   });
+
   e.target.classList.add('selected-time');
   let newMode = e.target.dataset['mode'];
   localStorage.setItem('mode', newMode);

@@ -2,4 +2,5 @@ Django==4.2
 psycopg2==2.9.7
 Gunicorn==20.1.0
 python-dotenv==0.20.0
+django-clearcache==1.2.1
 django-browser-reload==1.11.0

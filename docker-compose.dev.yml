@@ -7,7 +7,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
-      - '5432:5432'
+      - '5433:5432'
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
@@ -17,6 +17,7 @@ services:
   nodejs:
     build:
       context: .
+      # dockerfile: Dockerfile.nodejs
     container_name: nodejs
     tty: true
     restart: on-failure
@@ -29,6 +30,7 @@ services:
   django:
     build:
       context: .
+      # dockerfile: Dockerfile.python
     container_name: django
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
