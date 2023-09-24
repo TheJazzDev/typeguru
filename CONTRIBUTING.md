@@ -45,17 +45,26 @@ touch .env
 Open the .env file in a text editor of your choice and add the necessary environment variables:
 
 ```ini
-SECRET_KEY="your_secret_key"
+SECRET_KEY="_kp+rp_xt#!@i*db8hl13p0$^ydu$^!iu(vs=_nz+85kn^oj+n"
 DB_ENGINE=django.db.backends.postgresql
-DB_NAME=db_name
-DB_USER=db_user
-DB_PASSWORD=db_password
-DB_HOST=db
+DB_NAME=typeguru
+DB_USER=jazzdev
+DB_PASSWORD=postgres
+DB_HOST=localhost
 DB_PORT=5432
+
 DEBUG=True
+SECURE_HSTS_SECONDS=0
+SECURE_HSTS_INCLUDE_SUBDOMAINS=False
+SECURE_HSTS_PRELOAD=False
+SECURE_SSL_REDIRECT=False
+SESSION_COOKIE_SECURE=False
+CSRF_COOKIE_SECURE=False
+SECURE_PROXY_SSL_HEADER=HTTP_X_FORWARDED_PROTO,http
+
 ```
 
-If you are using Postgres, the provided configuration should work. Be sure to replace `your_secret_key`, `db_name`, `db_user`, `and db_password` with your actual database credentials. The DB_HOST should be left unchanged if you are using Docker Compose. The DB_PORT and DEBUG settings can also be left as they are.
+If you are using Postgres, the provided configuration should work. Be sure to replace `your_secret_key`, `db_name`, `db_user`, `and db_password` with your actual database credentials. The DB_HOST should be left unchanged if you are using Docker Compose. Everything from `debug` below should be left as they are.
 
 ## Generate a Secret Key
 
