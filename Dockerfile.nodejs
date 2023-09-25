@@ -1,4 +1,4 @@
-FROM node:gallium-bullseye
+FROM node:19
 
 WORKDIR /usr/src/app
 

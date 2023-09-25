@@ -140,10 +140,11 @@ const startTyping = () => {
       });
       document.querySelector('#timer').innerHTML = `${time--}`;
 
-      if (time === 0) {
+      if (time === -1) {
         clearInterval(counter);
         calculateResult();
         displayResult();
+        document.querySelector('#timer').innerHTML = '';
         durationButtons.forEach((button) => {
           button.removeAttribute('disabled');
         });

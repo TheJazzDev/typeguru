@@ -20,15 +20,11 @@ load_dotenv()
 
 ENVIRONMENT = os.environ.get("DJANGO_ENVIRONMENT", "dev")
 
+
 if ENVIRONMENT == "dev":
-    # Development settings
     from .settings_dev import *
-    DEBUG = True
-    # ...
 elif ENVIRONMENT == "prod":
-    # Production settings
     from .settings_prod import *
-    DEBUG = False
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -42,8 +38,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ["DEBUG"]
-
 
 PORT = 8000
 

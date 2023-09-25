@@ -1,13 +1,11 @@
 # Stage 1: Build the Node.js app
-FROM node:18 AS nodejs_builder
+FROM node:19 AS nodejs_builder
 
 WORKDIR /usr/src/nodejs_app
 
-COPY package*.json ./
+COPY package*.json .
 
 RUN npm install
-
-RUN chown -R node /usr/src/nodejs_app/node_modules
 
 COPY . .
 
@@ -40,4 +38,4 @@ COPY --from=python_builder /usr/src/python_app ./python_app
 EXPOSE 8000
 
 # Define the command to start your application
-CMD python manage.py runserver 0.0.0.0:8000
+CMD python manage.py runserver
