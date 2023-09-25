@@ -36,7 +36,6 @@ ALLOWED_HOSTS = ["127.0.0.1", "localhost", "typeguru-uy7k744b.b4a.run"]
 
 PORT = 8000
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -62,7 +61,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "project.urls"
+ROOT_URLCONF = "capstone.urls"
 
 TEMPLATES = [
     {
@@ -80,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "project.wsgi.application"
+WSGI_APPLICATION = "capstone.wsgi.application"
 
 
 # Database
@@ -159,4 +158,3 @@ SESSION_COOKIE_SECURE = os.environ["SESSION_COOKIE_SECURE"]
 CSRF_COOKIE_SECURE = os.environ["CSRF_COOKIE_SECURE"]
 
 SECURE_PROXY_SSL_HEADER = tuple(os.environ.get("SECURE_PROXY_SSL_HEADER", '').split(','))
-# print(SECURE_PROXY_SSL_HEADER)
