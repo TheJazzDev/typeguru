@@ -41,4 +41,4 @@ RUN pip install gunicorn
 EXPOSE 8000
 
 # Define the command to start your application
-CMD gunicorn capstone.wsgi:application -b 0.0.0.0:8000
+CMD gunicorn typeguru.wsgi:application -b 0.0.0.0:8000
