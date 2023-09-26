@@ -26,7 +26,7 @@ COPY . .
 # Stage 3: Final image
 FROM python:3.9
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/python_app
 
 # Copy built Node.js app from Stage 1
 COPY --from=nodejs_builder /usr/src/nodejs_app ./nodejs_app
@@ -38,7 +38,7 @@ COPY --from=python_builder /usr/src/python_app ./python_app
 RUN pip install gunicorn
 
 # Expose the port your application will listen on
-EXPOSE 8000
+EXPOSE 8000/tcp
 
 # Define the command to start your application
 CMD gunicorn capstone.wsgi:application -b 0.0.0.0:8000
