@@ -21,8 +21,6 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-RUN pip install django
-
 COPY . .
 
 # Stage 3: Final image
@@ -36,8 +34,11 @@ COPY --from=nodejs_builder /usr/src/nodejs_app ./nodejs_app
 # Copy built Python app from Stage 2
 COPY --from=python_builder /usr/src/python_app ./python_app
 
+# Install Gunicorn
+RUN pip install gunicorn
+
 # Expose the port your application will listen on
 EXPOSE 8000
 
 # Define the command to start your application
-CMD python manage.py runserver
+CMD gunicorn typeguru.wsgi:application -b 0.0.0.0:8000

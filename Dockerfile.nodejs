@@ -1,8 +1,10 @@
-FROM node:19
+FROM node:18
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/nodejs
 
 COPY package*.json ./
+
+RUN npm cache clean --force
 
 RUN npm install
 
