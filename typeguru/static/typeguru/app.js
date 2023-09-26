@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
       e.preventDefault();
+      document.querySelector('#text-container').innerHTML = ''
       fetchWords();
       displayContent();
     }

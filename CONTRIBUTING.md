@@ -78,7 +78,7 @@ Save your changes and close the .env file.
 Open a new terminal and run the following command to build Docker containers:
 
 ```bash
-docker-compose build
+docker-compose -f docker-compose.dev.yml build
 ```
 
 This command will build the necessary containers for your project.
@@ -88,7 +88,7 @@ This command will build the necessary containers for your project.
 After building the containers, run the following command to start the development server:
 
 ```bash
-docker-compose up
+docker-compose -f docker-compose.dev.yml up
 ```
 
 This will start the development server, and you can access it at http://localhost:8000 in your web browser.

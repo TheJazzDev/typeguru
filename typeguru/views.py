@@ -25,7 +25,7 @@ def index(request):
         user = User.objects.get(pk=request.user.id)
     except Exception as e:
         print("Unable to get user info:", e)
-    return render(request, "typeguru/index.html", {"user": user})
+    return render(request, "typeguru/index.html", )
 
 
 def login_view(request):
