@@ -19,7 +19,6 @@ services:
       context: .
       dockerfile: Dockerfile.nodejs
     container_name: nodejs
-    working_dir: /usr/src/nodejs
     tty: true
     restart: on-failure
     command: npm run dev
@@ -33,7 +32,6 @@ services:
       context: .
       dockerfile: Dockerfile.python
     container_name: django
-    working_dir: /usr/src/django
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/usr/src/app
