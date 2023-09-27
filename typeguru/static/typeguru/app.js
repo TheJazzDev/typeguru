@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const displayContent = () => {
-  document.querySelector('#content-section').style.display = 'none';
+  document.querySelector('#content-section').style.display = 'block';
   document.querySelector('#result-section').style.display = 'none';
-  document.querySelector('#settings-section').style.display = 'block';
+  document.querySelector('#settings-section').style.display = 'none';
 };
 
 const displayResult = () => {

@@ -1,6 +1,6 @@
 # production.py
 
-DEBUG = False
+DEBUG = True
 
 SECURE_HSTS_SECONDS = 3600
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True

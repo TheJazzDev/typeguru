@@ -56,9 +56,7 @@
 }
 
 .selected-setting {
-  font-weight: bold;
-  padding: 3px 0px;
   border-radius: 8px;
-  background-color: whitesmoke;
   color: black;
+  background-color: whitesmoke;
 }
