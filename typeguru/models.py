@@ -20,7 +20,7 @@ class TypingData(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     wpm = models.IntegerField()
     accuracy = models.FloatField()
-    mode = models.IntegerField()
+    duration = models.IntegerField()
     difficulty = models.CharField(max_length=12)
     timestamp = models.DateTimeField(auto_now_add=True)
 
@@ -35,7 +35,7 @@ class TypingData(models.Model):
             },
             "wpm": self.wpm,
             "accuracy": self.accuracy,
-            "mode": self.mode,
+            "duration": self.duration,
             "difficulty": self.difficulty,
             "timestamp": self.timestamp.strftime("%b %d %Y, %I:%M %p"),
         }

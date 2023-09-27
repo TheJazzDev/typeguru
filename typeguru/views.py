@@ -110,7 +110,7 @@ def results(request):
     data = json.loads(request.body)
     wpm = data.get("wpm", "")
     accuracy = data.get("accuracy", "")
-    mode = data.get("mode", "")
+    duration = data.get("duration", "")
     difficulty = data.get("difficulty", "")
 
     try:
@@ -118,7 +118,7 @@ def results(request):
             user=request.user,
             wpm=wpm,
             accuracy=accuracy,
-            mode=mode,
+            duration=duration,
             difficulty=difficulty,
         )
         print("Saved")

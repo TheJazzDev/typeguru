@@ -1,17 +1,49 @@
 // Model
 let totalKeypressed = 0;
 let totalCorrectKeypressed = 0;
-let timer = localStorage.getItem('duration');
+// let timer = localStorage.getItem('duration');
 let mode = localStorage.getItem('mode');
+let difficulty = localStorage.getItem('difficulty');
+let config = localStorage.getItem('config');
 
-if (timer === null) {
-  timer = 15;
-  localStorage.setItem('duration', 15);
-}
+// if (timer === null) {
+//   timer = 15;
+//   localStorage.setItem('duration', 15);
+// }
 
 if (mode === null) {
   mode = 'easy';
   localStorage.setItem('mode', 'easy');
+}
+
+if (difficulty === null) {
+  difficulty = 'normal';
+  localStorage.setItem('difficulty', 'normal');
+}
+
+if (config === null) {
+  const config = [{ mode: 'easy' }, { duration: 15 }];
+  localStorage.setItem('config', JSON.stringify(config));
+}
+
+const getConfigItem = (itemName) => {
+  let configObject = JSON.parse(config);
+
+  const object = configObject.find((item) => item.hasOwnProperty(itemName));
+
+  if (object && object[itemName] !== undefined) {
+    return object[itemName];
+  } else {
+    return null;
+  }
+};
+
+const setConfigItem = (itemName, value) => {
+  let configObject = JSON.parse(config);
+
+  configObject.find(item => item.hasOwnProperty(itemName))[itemName] = value;
+
+  localStorage.setItem('config', JSON.stringify(configObject));
 }
 
 const csrfToken = document.getElementById('result_csrf_token').value;
@@ -21,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Tab') {
       e.preventDefault();
-      document.querySelector('#text-container').innerHTML = ''
+      document.querySelector('#text-container').innerHTML = '';
       fetchWords();
       displayContent();
     }
@@ -29,9 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const displayContent = () => {
-  document.querySelector('#content-section').style.display = 'none';
+  document.querySelector('#content-section').style.display = 'block';
   document.querySelector('#result-section').style.display = 'none';
-  document.querySelector('#settings-section').style.display = 'block';
+  document.querySelector('#settings-section').style.display = 'none';
 };
 
 const displayResult = () => {
@@ -160,13 +192,13 @@ const startTyping = () => {
 
     e.target.classList.add('selected-time');
     let time = parseInt(e.target.dataset['time']);
-    localStorage.setItem('duration', time);
+    setConfigItem("duration", time)
     e.target.blur();
   };
 
   durationButtons.forEach((time) => {
     time.addEventListener('click', handleDurationClick);
-    if (timer == time.dataset['time']) {
+    if (parseInt(getConfigItem('duration')) == time.dataset['time']) {
       time.classList.add('selected-time');
     }
   });
@@ -178,7 +210,7 @@ const startTyping = () => {
       e.code === 'Space'
     ) {
       if (!timerStarted) {
-        let time = parseInt(localStorage.getItem('duration'));
+        let time = parseInt(getConfigItem('duration'));
         startTimer(time);
         timerStarted = true;
       }
@@ -218,7 +250,8 @@ const startTyping = () => {
 };
 
 const calculateResult = () => {
-  let time = parseInt(localStorage.getItem('duration'));
+  let duration = parseInt(getConfigItem('duration'));
+  let difficulty = localStorage.getItem('difficulty')
 
   let wpm = Math.round(totalCorrectKeypressed / 5 / (time / 60));
   let accuracy =
@@ -227,7 +260,7 @@ const calculateResult = () => {
       ((totalKeypressed - totalCorrectKeypressed) / totalKeypressed) * 100
     );
 
-  updateUI(wpm, accuracy, time);
+  updateUI(wpm, accuracy, duration);
 
   try {
     fetch('/results', {
@@ -238,8 +271,8 @@ const calculateResult = () => {
       body: JSON.stringify({
         wpm,
         accuracy,
-        mode: time,
-        difficulty: 'expert',
+        duration,
+        difficulty,
       }),
     })
       .then((response) => response.json())
@@ -251,23 +284,44 @@ const calculateResult = () => {
   }
 };
 
-let modeButtons = document.querySelectorAll('.difficulty');
+let modeButtons = document.querySelectorAll('.mode');
 
 const selectMode = (e) => {
   modeButtons.forEach((button) => {
-    button.classList.remove('selected-setting');
+    button.classList.remove('text-slate-300');
   });
 
-  e.target.classList.add('selected-setting');
-  let newMode = e.target.dataset['mode'];
-  localStorage.setItem('mode', newMode);
+  e.target.classList.add('text-slate-300');
+  let mode = e.target.dataset['mode'];
+  setConfigItem("mode", mode)
   e.target.blur();
 };
 
 modeButtons.forEach((time) => {
+  let mode = parseInt(getConfigItem('duration'))
   time.addEventListener('click', selectMode);
   if (mode == time.dataset['mode']) {
-    time.classList.add('selected-setting');
+    time.classList.add('text-slate-300');
+  }
+});
+
+let difficultyButtons = document.querySelectorAll('.difficulty');
+
+const selectDifficult = (e) => {
+  difficultyButtons.forEach((button) => {
+    button.classList.remove('selected-setting');
+  });
+
+  e.target.classList.add('selected-setting');
+  let difficulty = e.target.dataset['difficulty'];
+  localStorage.setItem('difficulty', difficulty);
+  e.target.blur();
+};
+
+difficultyButtons.forEach((diff) => {
+  diff.addEventListener('click', selectDifficult);
+  if (difficulty == diff.dataset['difficulty']) {
+    diff.classList.add('selected-setting');
   }
 });
 
