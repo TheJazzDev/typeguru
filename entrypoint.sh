@@ -12,4 +12,4 @@ if [ "$DJANGO_ENV" = "prod" ]; then
 fi
 
 # Start Gunicorn server
-exec gunicorn typeguru.wsgi:application --bind 0.0.0.0:8000
+exec gunicorn capstone.wsgi:application --bind 0.0.0.0:8000

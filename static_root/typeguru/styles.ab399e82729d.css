@@ -1,0 +1,62 @@
+::-webkit-scrollbar {
+  width: 0;
+}
+
+#content-section {
+  margin: 0 auto;
+  height: 70vh;
+}
+
+#text-container {
+  height: 130px;
+  overflow: hidden;
+  overflow-y: scroll;
+  line-height: 45px;
+  margin: 0 auto;
+}
+
+.letter {
+  white-space: pre;
+  padding: 0 0.1px;
+}
+
+.space {
+  letter-spacing: 4px;
+}
+
+.selected-time {
+  color: whitesmoke;
+}
+
+.correct {
+  color: whitesmoke;
+}
+
+.incorrect {
+  color: rgb(219, 50, 50);
+}
+
+.current::before {
+  content: '';
+  display: inline-block;
+  height: 1em;
+  margin-bottom: -3px;
+  width: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: white;
+  }
+}
+
+.selected-setting {
+  border-radius: 8px;
+  color: black;
+  background-color: whitesmoke;
+}
