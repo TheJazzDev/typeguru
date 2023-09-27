@@ -22,13 +22,19 @@
     <p id="accuracy"></p>
     <p id="time"></p>
   </div>
-  <div id="settings-section" class="hidden text-[#676e8a] max-w-4xl mx-auto">
-    <p class="text-xl">Test Difficulty</p>
-    <div class="flex gap-4 mt-4 border w-fit p-4">
-      <button data-mode="easy" class="difficulty">Easy</button>
-      <button data-mode="intermediate" class="difficulty">Intermediate</button>
-      <button data-mode="expert" class="difficulty">Expert</button>
-    </div>
+  <div id="settings-section"
+       class="hidden text-[#676e8a] max-w-4xl mx-auto mt-8">
+       <p class="text-center text-2xl pb-8">Make changes to your settings</p>
+    <table class="border rounded-xl border-[#676e8a] ">
+      <tr>
+        <td class="border-r border-[#676e8a] text-xl p-4">Test Difficulty</td>
+        <td class="flex gap-4 w-fit p-4">
+          <button data-mode="easy" class="difficulty w-32">Easy</button>
+          <button data-mode="intermediate" class="difficulty w-32">Intermediate</button>
+          <button data-mode="expert" class="difficulty w-32">Expert</button>
+        </td>
+      </tr>
+    </table>
   </div>
-  <script type="module" src="{% static 'typeguru/app.js' %}?v=1"></script>
+  <script type="module" src="{% static 'typeguru/app.js' %}"></script>
 {% endblock %}

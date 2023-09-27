@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const displayContent = () => {
-  document.querySelector('#content-section').style.display = 'block';
+  document.querySelector('#content-section').style.display = 'none';
   document.querySelector('#result-section').style.display = 'none';
-  document.querySelector('#settings-section').style.display = 'none';
+  document.querySelector('#settings-section').style.display = 'block';
 };
 
 const displayResult = () => {
@@ -255,10 +255,10 @@ let modeButtons = document.querySelectorAll('.difficulty');
 
 const selectMode = (e) => {
   modeButtons.forEach((button) => {
-    button.classList.remove('selected-time');
+    button.classList.remove('selected-setting');
   });
 
-  e.target.classList.add('selected-time');
+  e.target.classList.add('selected-setting');
   let newMode = e.target.dataset['mode'];
   localStorage.setItem('mode', newMode);
   e.target.blur();
@@ -267,7 +267,7 @@ const selectMode = (e) => {
 modeButtons.forEach((time) => {
   time.addEventListener('click', selectMode);
   if (mode == time.dataset['mode']) {
-    time.classList.add('selected-time');
+    time.classList.add('selected-setting');
   }
 });
 
