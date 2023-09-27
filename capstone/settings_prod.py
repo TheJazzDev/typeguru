@@ -10,4 +10,4 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
-ALLOWED_HOSTS = ["https://typeguru2-1dhasm5l.b4a.run/"]
+ALLOWED_HOSTS = ["https://typeguru2-1dhasm5l.b4a.run/", "node36a.containers.back4app.com"]
