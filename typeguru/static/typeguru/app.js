@@ -241,7 +241,7 @@ const calculateResult = () => {
   let duration = parseInt(getConfigItem('duration'));
   let difficulty = localStorage.getItem('difficulty');
 
-  let wpm = Math.round(totalCorrectKeypressed / 5 / (time / 60));
+  let wpm = Math.round(totalCorrectKeypressed / 5 / (duration / 60));
   let accuracy =
     100 -
     Math.round(
