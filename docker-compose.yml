@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   db:
@@ -10,16 +10,29 @@ services:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      PGDATA: /var/lib/postgresql/data/
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
 
   django:
     build:
       context: .
     container_name: django
-    command: gunicorn typeguru.wsgi --bind 0.0.0.0:8000
+    command: /usr/local/bin/gunicorn typeguru.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/usr/src/app
     ports:
       - '8000:8000'
     depends_on:
       - db
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - django
+
+volumes:
+  postgres_data:

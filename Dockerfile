@@ -10,14 +10,16 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install -r requirements.txt
 
-# Copy static files if needed
-COPY static /path/to/static/directory
-
+# Copy the entire Django project into the container
 COPY . .
 
-# Expose the port your application will listen on
+# Collect static files
+RUN python manage.py collectstatic --noinput
+
+# Expose the port your application will listen on (Gunicorn default is 8000)
 EXPOSE 8000/tcp
 
-# Command to start the server
-CMD [ "gunicorn", "typeguru.wsgi", "--bind", "0.0.0.0:8000" ]
-# CMD python manage.py runserver 0.0.0.0:8000
+# Create and set an entrypoint script
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+ENTRYPOINT ["./entrypoint.sh"]
