@@ -13,9 +13,6 @@ RUN pip install -r requirements.txt
 # Copy the entire Django project into the container
 COPY . .
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
-
 # Expose the port your application will listen on (Gunicorn default is 8000)
 EXPOSE 8000/tcp
 

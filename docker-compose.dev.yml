@@ -28,6 +28,8 @@ services:
       - db
 
   django:
+    environment:
+      - DJANGO_ENV=dev
     build:
       context: .
       dockerfile: Dockerfile.python

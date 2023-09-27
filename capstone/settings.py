@@ -17,9 +17,7 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-
 ENVIRONMENT = os.environ.get("DJANGO_ENVIRONMENT", "dev")
-
 
 if ENVIRONMENT == "dev":
     from .settings_dev import *
@@ -36,8 +34,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ["SECRET_KEY"]
-
-# SECURITY WARNING: don't run with debug turned on in production!
 
 PORT = 8000
 
@@ -144,7 +140,7 @@ STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
