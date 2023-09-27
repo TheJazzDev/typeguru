@@ -24,17 +24,26 @@
   </div>
   <div id="settings-section"
        class="hidden text-[#676e8a] max-w-4xl mx-auto mt-8">
-       <p class="text-center text-2xl pb-8">Make changes to your settings</p>
-    <table class="border rounded-xl border-[#676e8a] ">
+    <p class="text-center text-2xl pb-8">Make changes to your settings</p>
+    <!-- <table>
       <tr>
         <td class="border-r border-[#676e8a] text-xl p-4">Test Difficulty</td>
-        <td class="flex gap-4 w-fit p-4">
-          <button data-mode="easy" class="difficulty w-32">Easy</button>
-          <button data-mode="intermediate" class="difficulty w-32">Intermediate</button>
-          <button data-mode="expert" class="difficulty w-32">Expert</button>
-        </td>
+        <td class="flex gap-4 w-fit p-4"></td>
       </tr>
-    </table>
+    </table> -->
+    <div class="flex gap-4 justify-start items-start">
+      <div class="flex-1">
+        <p class="text-xl">Test Difficulty</p>
+        <p class="text-lg text-slate-300">
+          Normal is the classic type test experience. Expert fails the test if you submit (press space) an incorrect word. Master fails if you press a single incorrect key (meaning you have to achieve 100% accuracy).
+        </p>
+      </div>
+      <div class="flex justify-center gap-4">
+        <button data-mode="easy" class="difficulty w-24">Normal</button>
+        <button data-mode="intermediate" class="difficulty w-32">Intermediate</button>
+        <button data-mode="expert" class="difficulty w-24">Expert</button>
+      </div>
+    </div>
   </div>
   <script type="module" src="{% static 'typeguru/app.js' %}"></script>
 {% endblock %}
