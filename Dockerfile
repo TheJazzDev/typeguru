@@ -1,27 +1,22 @@
-# Stage 1: Build the Python app
-FROM python:3.9 AS python_builder
+# Set the base image
+FROM python:3.9
 
-WORKDIR /usr/src/python_app
+# Set the working directory
+WORKDIR /usr/src/app
 
+# Copy your application files and requirements
 COPY requirements.txt .
-
-RUN pip install -r requirements.txt
 
 COPY . .
 
-# Stage 2: Final image
-FROM python:3.9
+# Install Python dependencies
+RUN pip install -r requirements.txt
 
-WORKDIR /usr/src/app/python_app
-
-# Copy built Python app from Stage 1
-COPY --from=python_builder /usr/src/python_app ./python_app
-
-# Install Gunicorn
-RUN pip install gunicorn
+# Copy static files if needed
+COPY static /path/to/static/directory
 
 # Expose the port your application will listen on
 EXPOSE 8000/tcp
 
-# Define the command to start your application with Gunicorn
-CMD gunicorn typeguru.wsgi:application -b 0.0.0.0:8000
+# Define the command to start application
+CMD python manage.py runserver 0.0.0.0:8000
