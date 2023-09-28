@@ -27,16 +27,16 @@ services:
     depends_on:
       - db
 
-  nginx:
-    build:
-      context: ./nginx
-    container_name: nginx
-    ports:
-      - "80:80"
-    volumes:
-      - /path/to/your/ssl/files:/etc/nginx/ssl
-    depends_on:
-      - django
+  # nginx:
+  #   build:
+  #     context: ./nginx
+  #   container_name: nginx
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - /path/to/your/ssl/files:/etc/nginx/ssl
+  #   depends_on:
+  #     - django
 
 volumes:
   postgres_data:

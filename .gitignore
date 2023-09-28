@@ -8,6 +8,7 @@ node_modules/
 .vscode/
 .idea/
 *.pyo
-.key
-.crt
+/nginx.crt
+/nginx.key
+/nginx
 .git
