@@ -10,5 +10,5 @@ node_modules/
 *.pyo
 /nginx.crt
 /nginx.key
-/nginx
+nginx/
 .git

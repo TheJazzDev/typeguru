@@ -5,6 +5,15 @@ DEBUG = False
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
+ALLOWED_HOSTS = [
+    "cloud.appwrite.io",
+    "typeguru2-1dhasm5l.b4a.run",
+    "node36a.containers.back4app.com",
+    "127.0.0.1",
+]
+
+
 # SSL Certificate and Key Paths
 SSL_CERTIFICATE = os.path.join(BASE_DIR, "./ngix/localhost.crt")
 SSL_KEY = os.path.join(BASE_DIR, "./ngix/localhost.key")
@@ -18,8 +27,7 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
-ALLOWED_HOSTS = [
-    "typeguru2-1dhasm5l.b4a.run",
-    "node36a.containers.back4app.com",
-    "127.0.0.1",
-]
+
+# Simplified static file serving.
+# https://pypi.org/project/whitenoise/
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

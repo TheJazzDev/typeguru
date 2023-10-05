@@ -13,6 +13,9 @@ RUN pip install -r requirements.txt
 # Copy the entire Django project into the container
 COPY . .
 
+# Copy the Gunicorn configuration file into the container
+COPY gunicorn_config.py /usr/src/app/gunicorn_config.py
+
 # Expose the port your application will listen on (Gunicorn default is 8000)
 EXPOSE 8000/tcp
 

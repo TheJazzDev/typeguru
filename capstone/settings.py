@@ -56,12 +56,16 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "django_browser_reload.middleware.BrowserReloadMiddleware" if DEBUG else None,
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+if ENVIRONMENT == "prod":
+    INSTALLED_APPS.remove("django_browser_reload")
+    MIDDLEWARE.remove("django_browser_reload.middleware.BrowserReloadMiddleware")
 
 ROOT_URLCONF = "capstone.urls"
 

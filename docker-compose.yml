@@ -19,7 +19,7 @@ services:
     build:
       context: .
     container_name: django
-    command: /usr/local/bin/gunicorn capstone.wsgi:application --bind 0.0.0.0:8000
+    command: /usr/local/bin/gunicorn capstone.wsgi:application --config ./gunicorn_config.py
     volumes:
       - .:/usr/src/app
     ports:
@@ -27,16 +27,16 @@ services:
     depends_on:
       - db
 
-  # nginx:
-  #   build:
-  #     context: ./nginx
-  #   container_name: nginx
-  #   ports:
-  #     - "80:80"
-  #   volumes:
-  #     - /path/to/your/ssl/files:/etc/nginx/ssl
-  #   depends_on:
-  #     - django
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    ports:
+      - "81:80"
+    volumes:
+      - /path/to/your/ssl/files:/etc/nginx/ssl
+    depends_on:
+      - django
 
 volumes:
   postgres_data:
