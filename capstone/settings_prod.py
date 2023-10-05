@@ -1,17 +1,9 @@
 # production.py
 import os
 
-DEBUG = False
+DEBUG = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-ALLOWED_HOSTS = [
-    "cloud.appwrite.io",
-    "typeguru2-1dhasm5l.b4a.run",
-    "node36a.containers.back4app.com",
-    "127.0.0.1",
-]
 
 
 # SSL Certificate and Key Paths
@@ -28,6 +20,10 @@ CSRF_COOKIE_SECURE = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
-# Simplified static file serving.
-# https://pypi.org/project/whitenoise/
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+ALLOWED_HOSTS = [
+    "cloud.appwrite.io",
+    "typeguru2-1dhasm5l.b4a.run",
+    "node36a.containers.back4app.com",
+    "127.0.0.1",
+    "localhost"
+]

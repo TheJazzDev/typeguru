@@ -67,6 +67,7 @@ if ENVIRONMENT == "prod":
     INSTALLED_APPS.remove("django_browser_reload")
     MIDDLEWARE.remove("django_browser_reload.middleware.BrowserReloadMiddleware")
 
+
 ROOT_URLCONF = "capstone.urls"
 
 TEMPLATES = [

@@ -15,7 +15,7 @@ services:
 
   django:
     environment:
-        - DJANGO_ENV=prod
+      - DJANGO_ENV=prod
     build:
       context: .
     container_name: django
@@ -32,7 +32,7 @@ services:
       context: ./nginx
     container_name: nginx
     ports:
-      - "81:80"
+      - '81:80'
     volumes:
       - /path/to/your/ssl/files:/etc/nginx/ssl
     depends_on:

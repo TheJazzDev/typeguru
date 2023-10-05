@@ -14,12 +14,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import os
+
 from django.contrib import admin
 from django.urls import include, path
+
+ENVIRONMENT = os.environ.get("DJANGO_ENVIRONMENT", "dev")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("admin/clearcache/", include("clearcache.urls")),
     path("", include("typeguru.urls")),
-    path("__reload__/", include("django_browser_reload.urls")),
 ]
+
+if ENVIRONMENT == "dev":
+    urlpatterns.append(path("__reload__/", include("django_browser_reload.urls")))
