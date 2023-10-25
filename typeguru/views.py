@@ -1,6 +1,7 @@
 import json
 import os
 import random
+from django.utils import timezone
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -41,11 +42,11 @@ def login_view(request):
         else:
             return render(
                 request,
-                "typeguru/signin.html",
+                "typeguru/login.html",
                 {"message": "Invalid username and/or password."},
             )
     else:
-        return render(request, "typeguru/signin.html")
+        return render(request, "typeguru/login.html")
 
 
 def logout_view(request):
@@ -64,7 +65,7 @@ def register(request):
         confirmation = request.POST["confirmation"]
         if password != confirmation:
             return render(
-                request, "typeguru/register.html", {"message": "Passwords must match."}
+                request, "typeguru/signup.html", {"message": "Passwords must match."}
             )
 
         # Attempt to create new user
@@ -87,8 +88,13 @@ def register(request):
 def account(request):
     try:
         user = User.objects.get(pk=request.user.id)
-        all_data = TypingData.objects.filter(user=user)
-        all_data = all_data.order_by("-timestamp").all()
+        all_data = TypingData.objects.filter(user=user).order_by("-timestamp")
+
+        paginator = Paginator(all_data, len(all_data))  # Create a paginator with all records
+        page = request.GET.get("page")  # Get the 'page' parameter from the request
+
+        all_data = paginator.get_page(page)  # Retrieve all data for the specified page
+
     except Exception as e:
         print("Unable to get user typing data:", e)
 
@@ -97,6 +103,7 @@ def account(request):
         "typeguru/account.html",
         {"user": user, "all_data": all_data},
     )
+
 
 
 @login_required
@@ -139,13 +146,18 @@ def leaderboard(request):
             .annotate(
                 wpm=Max("wpm"),
                 accuracy=Max("accuracy"),
-                mode=Max("mode"),
+                duration=Max("duration"),
                 difficulty=Max("difficulty"),
                 timestamp=Max("timestamp"),
             )
             .order_by("-wpm")
             .distinct()
         )
+
+        # Format the timestamp field
+        for entry in leaderboard:
+            entry["timestamp"] = entry["timestamp"].strftime("%b. %d, %Y, %I:%M %p")
+
 
         serialized_leaderboard = list(leaderboard)
 

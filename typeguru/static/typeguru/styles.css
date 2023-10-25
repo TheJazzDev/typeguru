@@ -60,3 +60,18 @@
   color: black;
   background-color: whitesmoke;
 }
+
+.table_scroll::-webkit-scrollbar {
+  background-color: none;
+  width: 7px;
+}
+
+.table_scroll::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background: #757575;
+}
+
+.table_scroll {
+  -ms-overflow-style: none;
+  /* scrollbar-width: none; */
+}

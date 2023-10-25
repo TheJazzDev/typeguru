@@ -1,0 +1,25 @@
+{% extends "typeguru/layout.html" %}
+{% load static %}
+{% block body %}
+<h2 class="text-center text-3xl py-8">Login</h2>
+{% if message %}<div>{{ message }}</div>{% endif %}
+<form action="{% url 'login' %}" method="post" class="text-center">
+    {% csrf_token %}
+    <input autofocus
+           class="bg-[#0f172a] outline-none block w-1/2 mx-auto py-1 px-4 border-b border-[#515d6e] placeholder:italic"
+           type="text"
+           name="username"
+           placeholder="Username">
+    <input class="bg-[#0f172a] outline-none block w-1/2 mx-auto py-1 px-4 border-b border-[#515d6e] placeholder:italic mt-8"
+           type="password"
+           name="password"
+           placeholder="Password">
+    <input class="bg-[#207399] text-white font-semibold py-1.5 px-8 mt-8 rounded-2xl w-fit cursor-pointer"
+           type="submit"
+           value="Login">
+</form>
+<p class="text-center mt-8">
+    Don't have an account? <a class="text-blue-500" href="{% url 'signup' %}">Register here.</a>
+</p>
+  <!-- <script type="module" src="{% static 'typeguru/text.js' %}?v=11"></script> -->
+{% endblock %}

@@ -7,36 +7,38 @@
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-      {% block title %}Touch Typing{% endblock %}
+      {% block title %}TypeGuru - TouchTyping{% endblock %}
     </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
+          rel="stylesheet" />
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'typeguru/styles.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
   </head>
-  <body class="bg-[#121520]">
+  <body class="bg-[#121520] flex flex-col justify-between h-screen">
     <nav class="flex justify-between items-center mx-auto text-center w-full max-w-5xl text-[#676e8a] px-8 lg:px-0 py-4">
-      <div>
-        <a href="{% url 'index' %}" class="text-3xl">TypeGuru</a>
-      </div>
+      <a href="{% url 'index' %}" class="text-3xl">TypeGuru</a>
       <ul class="flex text-base gap-4">
-        <li>
-          <a href="{% url 'leaderboard' %}">Leaderboard</a>
+        <li id="leaderboardButton">
+          <button data-modal-target="leaderboardModal"
+                  data-modal-toggle="leaderboardModal">LeaderBoard</button>
         </li>
-        <li id="settings-button" class="cursor-pointer">
-          Settings
-        </li>
+        <li id="settings-button" class="cursor-pointer">Settings</li>
         <li>
           <a href="{% url 'account' %}">Profile</a>
         </li>
       </ul>
     </nav>
-    <div tabindex="0" id="tab-capture"></div>
-    <div>
+    <!-- <div tabindex="0" id="tab-capture"></div> -->
+    <div class="flex-1 px-8 lg:px-0">
       {% block body %}{% endblock %}
     </div>
-    <footer class="text-center text-[#676e8a] py-4 text-xl fixed bottom-0 w-full">
-      Footer
+    <footer class="text-center text-[#676e8a] py-4 text-xl w-full bg-[#121520]">
+      <a href="https://github.com/TheJazzDev/typeguru"
+         target="_blank"
+         rel="noopener noreferrer">Github</a>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   </body>
 </html>
 <!-- class="h-[calc(100vh-300px)]" -->
