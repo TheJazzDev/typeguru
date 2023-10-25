@@ -53,7 +53,7 @@ const displaySection = (sectionId) => {
 
   sections.forEach((section) => {
     document.getElementById(section).style.display =
-      id === sectionId ? 'block' : 'none';
+      section === sectionId ? 'block' : 'none';
   });
 };
 
@@ -258,17 +258,24 @@ const calculateResult = () => {
   let duration = parseInt(getConfigItem('duration'));
   let difficulty = getConfigItem('difficulty');
 
+  // Ensure a minimum time duration of 1 second to prevent division by zero
+  let minDuration = Math.max(1, duration);
+
   let wpm = Math.round(totalCorrectKeypressed / 5 / (duration / 60));
+
+  // Calculate accuracy considering time
   let accuracy =
     100 -
     Math.round(
-      ((totalKeypressed - totalCorrectKeypressed) / totalKeypressed) * 100
+      ((totalKeypressed - Math.min(totalCorrectKeypressed, totalKeypressed)) /
+        totalKeypressed) *
+        100
     );
 
   updateUI(wpm, accuracy, duration);
 
   try {
-    fetch('/results', {
+    fetch('api/test-results', {
       method: 'POST',
       headers: {
         'X-CSRFToken': csrfToken,
@@ -279,11 +286,11 @@ const calculateResult = () => {
         duration,
         difficulty,
       }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.message);
-      });
+    });
+    // .then((response) => response.json())
+    // .then((data) => {
+    //   console.log(data.message);
+    // });
   } catch (error) {
     console.log(error);
   }

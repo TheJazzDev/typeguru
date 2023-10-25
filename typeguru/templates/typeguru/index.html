@@ -2,11 +2,11 @@
 {% load static %}
 {% block body %}
   <div id="content-section" class="max-w-5xl w-full pt-24">
-    <div class="flex items-baseline justify-between text-[#676e8a] pb-4">
-      <div id="timer" class="text-2xl"></div>
+    <div class="flex items-center justify-between text-[#676e8a] h-12 mb-4">
+      <div id="timer" class="text-2xl w-8"></div>
       <div class="flex gap-4">
         <button class="mode" data-mode="easy">Easy</button>
-        <button class="mode" data-mode="intermediate">Inter</button>
+        <button class="mode" data-mode="intermediate">Intermediate</button>
         <button class="mode" data-mode="advance">Advance</button>
       </div>
       <div class="flex gap-4 border border-[#676e8a] px-4 py-0.5 font-bold rounded-lg">
@@ -19,8 +19,13 @@
          class="max-w-4xl h-40 text-justify text-[#676e8a] text-[1.7rem] [&>div]:inline-block"></div>
   </div>
   <div id="result-section"
-       class="text-center text-[#676e8a] text-[1.7rem] flex">
+       class="hidden text-center text-[#676e8a] text-[1.7rem]">
     <input type="hidden" id="result_csrf_token" value="{{ csrf_token }}">
+    {% if user.is_authenticated %}
+      ''
+    {% else %}
+      <p class="text-base text-white my-8">Login to save your progress!</p>
+    {% endif %}
     <p id="wpm"></p>
     <p id="accuracy"></p>
     <p id="time"></p>
@@ -88,5 +93,5 @@
       </div>
     </div>
   </div>
-  <script type="module" src="{% static 'typeguru/app.js' %}?v=3"></script>
+  <script type="module" src="{% static 'typeguru/app.js' %}"></script>
 {% endblock %}

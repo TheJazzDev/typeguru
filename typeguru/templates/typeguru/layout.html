@@ -24,12 +24,23 @@
                   data-modal-toggle="leaderboardModal">LeaderBoard</button>
         </li>
         <li id="settings-button" class="cursor-pointer">Settings</li>
-        <li>
-          <a href="{% url 'account' %}">Profile</a>
-        </li>
+        {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'account' %}">Profile</a>
+          </li>
+          <li>
+            <a href="{% url 'logout' %}">Logout</a>
+          </li>
+        {% else %}
+          <li>
+            <a href="{% url 'login' %}">Login</a>
+          </li>
+          <li>
+            <a href="{% url 'register' %}">Register</a>
+          </li>
+        {% endif %}
       </ul>
     </nav>
-    <!-- <div tabindex="0" id="tab-capture"></div> -->
     <div class="flex-1 px-8 lg:px-0">
       {% block body %}{% endblock %}
     </div>
@@ -41,4 +52,3 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   </body>
 </html>
-<!-- class="h-[calc(100vh-300px)]" -->

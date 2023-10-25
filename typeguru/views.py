@@ -7,10 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db import IntegrityError
 from django.db.models import Max
-from django.http import (
-    HttpResponseRedirect,
-    JsonResponse,
-)
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 
@@ -54,13 +51,13 @@ def logout_view(request):
 
 def register(request):
     if request.method == "POST":
-        username = request.POST["username"]
         email = request.POST["email"]
+        username = request.POST["username"]
 
         # Ensure password matches confirmation
         password = request.POST["password"]
-        confirmation = request.POST["confirmation"]
-        if password != confirmation:
+        confirm_password = request.POST["confirm_password"]
+        if password != confirm_password:
             return render(
                 request, "typeguru/signup.html", {"message": "Passwords must match."}
             )

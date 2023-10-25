@@ -17,8 +17,8 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-ENVIRONMENT = os.environ.get("DJANGO_ENVIRONMENT", "dev")
-
+ENVIRONMENT = os.environ.get("DJANGO_ENVIRONMENT")
+print(ENVIRONMENT)
 if ENVIRONMENT == "dev":
     from .settings_dev import *
 elif ENVIRONMENT == "prod":

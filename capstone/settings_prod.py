@@ -1,12 +1,6 @@
-# production.py
-import os
-
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "cloud.appwrite.io",
-    "typeguru2-1dhasm5l.b4a.run",
-    "node41a.containers.back4app.com",
     "127.0.0.1",
     ".vercel.app",
     ".now.sh",
