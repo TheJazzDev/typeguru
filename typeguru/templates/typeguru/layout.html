@@ -11,12 +11,12 @@
     </title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
           rel="stylesheet" />
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}?v=42342432423" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'typeguru/styles.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
   </head>
-  <body class="bg-[#121520] flex flex-col justify-between h-screen">
-    <nav class="flex justify-between items-center mx-auto text-center w-full max-w-5xl text-[#676e8a] px-8 lg:px-0 py-4">
+  <body class="bg-[#121520] flex md:flex-col justify-between items-center h-screen">
+    <nav class="hidden md:flex justify-between items-center mx-auto text-center w-full max-w-5xl text-[#676e8a] px-8 lg:px-0 py-4">
       <a href="{% url 'index' %}" class="text-3xl">TypeGuru</a>
       <ul class="flex text-base gap-4">
         <li id="leaderboardButton">
@@ -41,14 +41,18 @@
         {% endif %}
       </ul>
     </nav>
-    <div class="flex-1 px-8 lg:px-0">
+    <div class="hidden md:block flex-1 px-8 lg:px-0">
       {% block body %}{% endblock %}
     </div>
-    <footer class="text-center text-[#676e8a] py-4 text-xl w-full bg-[#121520]">
+    <footer class="hidden md:block text-center text-[#676e8a] py-4 text-xl w-full bg-[#121520]">
       <a href="https://github.com/TheJazzDev/typeguru"
          target="_blank"
          rel="noopener noreferrer">Github</a>
     </footer>
+    <p id="mobile-warning"
+       class="md:hidden text-white p-2 text-center text-2xl px-4">
+      Please access this website on a desktop for the best experience.
+    </p>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   </body>
 </html>
