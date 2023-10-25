@@ -26,7 +26,7 @@ To begin utilizing TypeGuru, start by creating an account and explore the [Usage
 
 TypeGuru is a simple web application tailored to help users improve their typing skills. Whether you're a beginner looking to learn touch typing or an experienced typist aiming to enhance your speed and accuracy, TypeGuru offers a platform to achieve your typing goals.
 
-<!-- ![Application Homepage](image.png) -->
+![Application Homepage](image.png)
 
 ## Features
 
@@ -65,25 +65,11 @@ Kindly check the [CONTRIBUTING.md](CONTRIBUTING.md) file on how to install, run 
   │ ├── wsgi.py
   │ └── ...
   │
-  ├── nginx/
-  │ ├── Dockerfile
-  │ ├── localhost.crt
-  │ ├── localhost.key
-  │ ├── nginx.conf
-  │ └── ...
-  │
   ├── static/
   │ ├── css.js
   │ ├── favicon.ico
   │ ├── signup.js
   │ ├── styles.css
-  │ └── ...
-  │
-  ├── static_root/
-  │ ├── admin
-  │ ├── css
-  │ ├── dictionary
-  │ ├── typeguru
   │ └── ...
   │
   ├── typeguru/
@@ -104,20 +90,17 @@ Kindly check the [CONTRIBUTING.md](CONTRIBUTING.md) file on how to install, run 
   │ ├── views.py
   │ └── ...
   │
+  ├── .gitignore
+  ├── build_files.sh
   ├── CONTRIBUTING.md
-  ├── docker-compose.dev.yml
-  ├── docker-compose.yml
-  ├── Dockerfile
-  ├── Dockerfile.nodejs
-  ├── Dockerfile.python
-  ├── entrypoint.sh
-  ├── gunicorn_config.py
+  ├── LICENSE
   ├── manage.py
   ├── package.json
   ├── postcss.json
   ├── README.md
   ├── requirements.txt
   ├── tailwind.config.js
+  ├── vercel.json
   └── ...
   ```
 

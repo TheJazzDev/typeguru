@@ -22,10 +22,10 @@
        class="hidden text-center text-[#676e8a] text-[1.7rem]">
     <input type="hidden" id="result_csrf_token" value="{{ csrf_token }}">
     {% if user.is_authenticated %}
-      ''
     {% else %}
       <p class="text-base text-white my-8">Login to save your progress!</p>
     {% endif %}
+    <button id="authenticated" data-authenticated="{{ user.is_authenticated }}"></button>
     <p id="wpm"></p>
     <p id="accuracy"></p>
     <p id="time"></p>

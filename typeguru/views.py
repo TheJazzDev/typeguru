@@ -101,7 +101,7 @@ def account(request):
 
 
 @login_required
-def results(request):
+def save_test_result(request):
     # Ensure the method is only POST
     if request.method != "POST":
         return JsonResponse({"error": "POST request required!"}, status=400)

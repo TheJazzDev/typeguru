@@ -5,8 +5,13 @@ let config = localStorage.getItem('config');
 
 // If the configuration is not found in local storage, initialize it with default values.
 if (config === null) {
-  const config = [{ mode: 'easy' }, { duration: 15 }, { difficulty: 'normal' }];
-  localStorage.setItem('config', JSON.stringify(config));
+  const defaultConfig = [
+    { mode: 'easy' },
+    { duration: 15 },
+    { difficulty: 'normal' },
+  ];
+  localStorage.setItem('config', JSON.stringify(defaultConfig));
+  config = JSON.stringify(defaultConfig); // Update the config variable
 }
 
 // Function to retrieve a specific item from the configuration object
@@ -274,25 +279,31 @@ const calculateResult = () => {
 
   updateUI(wpm, accuracy, duration);
 
-  try {
-    fetch('api/test-results', {
-      method: 'POST',
-      headers: {
-        'X-CSRFToken': csrfToken,
-      },
-      body: JSON.stringify({
-        wpm,
-        accuracy,
-        duration,
-        difficulty,
-      }),
-    });
-    // .then((response) => response.json())
-    // .then((data) => {
-    //   console.log(data.message);
-    // });
-  } catch (error) {
-    console.log(error);
+  const authenticated = document.getElementById('authenticated');
+  const authenticatedValue = authenticated.dataset.authenticated;
+  const isAuthenticated = authenticatedValue === 'true';
+
+  if (isAuthenticated) {
+    try {
+      fetch('api/save-test-result', {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': csrfToken,
+        },
+        body: JSON.stringify({
+          wpm,
+          accuracy,
+          duration,
+          difficulty,
+        }),
+      });
+      // .then((response) => response.json())
+      // .then((data) => {
+      //   console.log(data.message);
+      // });
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 

@@ -11,5 +11,5 @@ urlpatterns = [
     # apis
     path("api/leaderboard", views.leaderboard, name="leaderboard"),
     path("api/generate-words", views.generate_words, name="generate-words"),
-    path("api/test-results", views.results, name="results"),
+    path("api/save-test-result", views.save_test_result, name="results"),
 ]
