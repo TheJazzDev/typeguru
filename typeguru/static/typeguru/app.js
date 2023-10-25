@@ -98,7 +98,7 @@ document.getElementById('settings-button').addEventListener('click', () => {
 // Function to fetch words based on the selected mode
 const fetchWords = async (mode) => {
   try {
-    const response = await fetch('/generate-words', {
+    const response = await fetch('api/generate-words', {
       method: 'POST',
       headers: {
         'X-CSRFToken': csrfToken,

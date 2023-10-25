@@ -1,17 +1,14 @@
 import json
 import os
 import random
-from django.utils import timezone
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db import IntegrityError
-from django.db.models import Count, Max
+from django.db.models import Max
 from django.http import (
-    HttpResponseNotFound,
     HttpResponseRedirect,
-    HttpResponseServerError,
     JsonResponse,
 )
 from django.shortcuts import render
