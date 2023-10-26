@@ -15,6 +15,8 @@ Welcome to TypeGuru, a specialized web application designed to help those lookin
 - [Installation](#installation)
 - [Folder Structure](#folder-structure)
 - [Usage](#usage)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
 
@@ -37,9 +39,9 @@ Below are the key features of TypeGuru:
 - **Multiple Typing Modes:** Practice typing in different modes to improve your skills.
 - **Customize Difficulty Levels:** Adjust the difficulty level of typing exercises to match your proficiency.
 - **Record Keeping:** Keep track of your typing performance and see your progress over time.
-- **Responsive Design:** Enjoy a seamless experience across devices, from desktop to mobile.
+- **Responsive Design:** Available on desktop only.
 
-### Technologies Used
+## Technologies Used
 
 List the key technologies, frameworks, and libraries that your project utilizes.
 
@@ -47,11 +49,11 @@ List the key technologies, frameworks, and libraries that your project utilizes.
 <img src="https://www.python.org/static/community_logos/python-logo-generic.svg" alt="Python" width="150" height="50"> <img src="https://www.djangoproject.com/m/img/logos/django-logo-negative.svg" alt="Django" width="150" height="50"> <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" alt="JavaScript" width="50" height="50"> <img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_256.png" alt="HTML" width="60" height="60"> <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS" width="50" height="60">
 </div>
 
-### Installation
+## Installation
 
 Kindly check the [CONTRIBUTING.md](CONTRIBUTING.md) file on how to install, run and contribute to the project
 
-- #### Folder Structure
+- ## Folder Structure
 
   ```
   project-root/
@@ -120,6 +122,14 @@ Sign Up: Begin your TypeGuru experience by signing up for an account. Provide yo
 - Explore the typing exercises to practice.
 - Monitor your typing speed and accuracy.
 - Track your typing progress.
+
+## Roadmap
+
+Stay tuned for exciting updates and new features in future versions of TypeGuru.
+
+## Contributing
+
+Want to contribute to TypeGuru? You can help make it better! Check out the [Contributing Guide](CONTRIBUTING.md) for more details.
 
 ## License
 
