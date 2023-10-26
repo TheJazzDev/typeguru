@@ -287,9 +287,8 @@ const calculateResult = () => {
 
   const authenticated = document.getElementById('authenticated');
   const authenticatedValue = authenticated.dataset.authenticated;
-  const isAuthenticated = authenticatedValue === 'true';
 
-  if (isAuthenticated) {
+  if (authenticatedValue === 'True') {
     try {
       fetch('api/save-test-result', {
         method: 'POST',
@@ -303,10 +302,6 @@ const calculateResult = () => {
           difficulty,
         }),
       });
-      // .then((response) => response.json())
-      // .then((data) => {
-      //   console.log(data.message);
-      // });
     } catch (error) {
       console.log(error);
     }
