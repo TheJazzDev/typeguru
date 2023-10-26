@@ -1,6 +1,8 @@
 # TypeGuru
 
-#### Video Demo:
+#### Live Demo: (Click Here)[https://typeguru-jazzdev.vercel.app/]
+
+### Video Demo: (Click Here)[https://youtu.be/QaZVez8C760]
 
 #### Description: TypeGuru: Become the better typist you desire
 
