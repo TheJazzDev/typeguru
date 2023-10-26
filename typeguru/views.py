@@ -84,10 +84,7 @@ def account(request):
         user = User.objects.get(pk=request.user.id)
         all_data = TypingData.objects.filter(user=user).order_by("-timestamp")
 
-        paginator = Paginator(all_data, len(all_data))  # Create a paginator with all records
-        page = request.GET.get("page")  # Get the 'page' parameter from the request
-
-        all_data = paginator.get_page(page)  # Retrieve all data for the specified page
+        print(all_data)
 
     except Exception as e:
         print("Unable to get user typing data:", e)
