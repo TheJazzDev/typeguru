@@ -1,6 +1,13 @@
 {% extends "typeguru/layout.html" %}
 {% load static %}
 {% block body %}
+<ul class="flex gap-4 items-center justify-center text-[#676e8a] text-lg h-12">
+  <li id="leaderboardButton">
+    <button data-modal-target="leaderboardModal"
+            data-modal-toggle="leaderboardModal">LeaderBoard</button>
+  </li>
+  <li id="settings-button" class="cursor-pointer">Settings</li>
+</ul>
   <div id="content-section" class="max-w-5xl pt-24">
     <div class="flex items-center justify-between text-[#676e8a] max-w-5xl h-12 mb-4">
       <div id="timer" class="text-2xl w-8"></div>
@@ -93,5 +100,5 @@
       </div>
     </div>
   </div>
-  <script type="module" src="{% static 'typeguru/app.js' %}?v=231"></script>
+  <script type="module" src="{% static 'typeguru/app.js' %}?22323232323"></script>
 {% endblock %}

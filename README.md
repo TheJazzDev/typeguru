@@ -93,6 +93,9 @@ Kindly check the [CONTRIBUTING.md](CONTRIBUTING.md) file on how to install, run 
   ├── .gitignore
   ├── build_files.sh
   ├── CONTRIBUTING.md
+  ├── docker-compose.yml
+  ├── Dockerfile.nodejs
+  ├── Dockerfile.python
   ├── LICENSE
   ├── manage.py
   ├── package.json

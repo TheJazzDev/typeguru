@@ -41,11 +41,17 @@ const csrfToken = document.getElementById('result_csrf_token').value;
 // View
 // When the 'Tab' key is pressed, clear the text container and fetch new words.
 const handleTabKey = (e) => {
+  const modalButton = document.querySelector(
+    '[data-modal-hide="leaderboardModal"]'
+  );
+
   if (e.key === 'Tab') {
     e.preventDefault();
+    modalButton.click();
     document.querySelector('#text-container').innerHTML = '';
     fetchWords(getConfigItem('mode'));
     displaySection('content-section');
+    e.target.blur();
   }
 };
 

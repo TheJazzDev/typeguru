@@ -19,11 +19,11 @@
     <nav class="hidden md:flex justify-between items-center mx-auto text-center w-full max-w-5xl text-[#676e8a] px-8 lg:px-0 py-4">
       <a href="{% url 'index' %}" class="text-3xl">TypeGuru</a>
       <ul class="flex text-base gap-4">
-        <li id="leaderboardButton">
+        <!-- <li id="leaderboardButton">
           <button data-modal-target="leaderboardModal"
                   data-modal-toggle="leaderboardModal">LeaderBoard</button>
         </li>
-        <li id="settings-button" class="cursor-pointer">Settings</li>
+        <li id="settings-button" class="cursor-pointer">Settings</li> -->
         {% if user.is_authenticated %}
           <li>
             <a href="{% url 'account' %}">Profile</a>
