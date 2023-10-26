@@ -1,13 +1,13 @@
 {% extends "typeguru/layout.html" %}
 {% load static %}
 {% block body %}
-  <div class="text-[#676e8a] flex flex-col gap-4 mb-8 max-w-5xl mx-auto  lg:px-0 ">
-    <p>Username: {{ user.username }}</p>
+  <div class="text-[#676e8a] flex flex-col gap-4 mb-8 max-w-4xl lg:max-w-5xl mx-auto  lg:px-0 ">
+    <p class="try">Username: {{ user.username }}</p>
     <p>Email: {{ user.email }}</p>
     <p>Data Registered: {{ user.date_registered }}</p>
   </div>
-  <div class="flex flex-col text-slate-100 max-w-5xl mx-auto lg:px-0 ">
-    <div class="flex w-full bg-[#1b1e2c] max-w-5xl py-2 px-4">
+  <div class="flex flex-col text-slate-100 max-w-4xl lg:max-w-5xl mx-auto lg:px-0">
+    <div class="flex w-full bg-[#1b1e2c] py-2 px-4">
       <span class="w-44">#</span>
       <span class="w-44">WPM</span>
       <span class="w-44">Accuracy</span>
@@ -15,7 +15,7 @@
       <span class="w-44">Difficulty</span>
       <span class="w-36 mr-2">Timestamp</span>
     </div>
-    <div class="flex flex-col max-w-5xl py-2 h-[408px] overflow-x-auto table_scroll">
+    <div class="flex flex-col py-2 h-[408px] overflow-x-auto table_scroll">
       {% for data in all_data %}
         <div class="flex items-center justify-between px-4 {% if forloop.counter0|divisibleby:2 %} {% else %}bg-[#1b1e2c] {% endif %}">
           <span class="w-44">{{ forloop.counter }}</span>
@@ -25,8 +25,10 @@
           <span class="w-44">{{ data.difficulty }}</span>
           <span class="w-36 text-sm">{{ data.timestamp }}</span>
         </div>
+        {% empty %}
+        <span class="text-lg text-center">You have not record yet!</span>
       {% endfor %}
     </div>
   </div>
-  <script type="module" src="{% static 'typeguru/app.js' %}"></script>
+
 {% endblock %}

@@ -78,40 +78,30 @@ Save your changes and close the .env file.
 Open a new terminal and run the following command to build Docker containers:
 
 ```bash
-docker-compose -f docker-compose.dev.yml build
+docker-compose build
 ```
 
 This command will build the necessary containers for your project.
 
 ## Start the Development Server
 
-After building the containers, run the following command to start the development server:
+zzun the following command to start the development server:
 
 ```bash
-docker-compose -f docker-compose.dev.yml up
+docker-compose up
 ```
 
 This will start the development server, and you can access it at http://localhost:8000 in your web browser.
 
 ## Run Database Migrations
 
-To apply database migrations, you'll need to enter the Django container. First, find the container ID by running:
+To apply database migrations, run the following command in a new terminal.
 
 ```bash
-docker ps
+docker exec -it django bash -l
 ```
 
-Locate the container associated with your Django application and note its container ID.
-
-Next, enter the Django container using the container ID:
-
-```bash
-docker exec -it <container_id> bash -l
-```
-
-Replace <container_id> with the actual container ID you noted earlier.
-
-Finally, inside the container, run the following commands to apply migrations:
+Inside the container, run the following commands to apply migrations:
 
 ```bash
 python3 manage.py makemigrations

@@ -11,7 +11,7 @@
     </title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
           rel="stylesheet" />
-    <link href="{% static 'css/styles.css' %}?v=42342432423" rel="stylesheet">
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'typeguru/styles.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
   </head>
@@ -41,13 +41,14 @@
         {% endif %}
       </ul>
     </nav>
-    <div class="hidden md:block flex-1 px-8 lg:px-0">
+    <div class="hidden md:block flex-1 px-8 lg:px-0 w-full">
       {% block body %}{% endblock %}
     </div>
-    <footer class="hidden md:block text-center text-[#676e8a] py-4 text-xl w-full bg-[#121520]">
+    <footer class="hidden md:block text-center text-[#676e8a] py-4 text-base w-full bg-[#121520]">
       <a href="https://github.com/TheJazzDev/typeguru"
          target="_blank"
          rel="noopener noreferrer">Github</a>
+         <p class="inline-block pl-8">Press <span class="bg-white py-0.5 px-1.5 rounded-md text-sm font-semibold">Tab Key</span> to start a new test!</p>
     </footer>
     <p id="mobile-warning"
        class="md:hidden text-white p-2 text-center text-2xl px-4">

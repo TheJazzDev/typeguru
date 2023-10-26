@@ -1,0 +1,1 @@
+alert('Go to Settings to change the settings');
