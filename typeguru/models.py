@@ -25,7 +25,7 @@ class TypingData(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.id}: {self.user} {self.wpm} {self.accuracy} {self.mode}"
+        return f"{self.id}: {self.user} {self.wpm} {self.accuracy} {self.difficulty}"
 
     def serialize(self):
         return {
