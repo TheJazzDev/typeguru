@@ -128,7 +128,6 @@ def save_test_result(request):
         return JsonResponse({"error": "Failed to update result:"}, status=400)
 
 
-@login_required
 def leaderboard(request):
     # Ensure the method is only GET
     if request.method != "GET":
